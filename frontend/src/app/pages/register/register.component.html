@@ -1,0 +1,183 @@
+<h1 class="text-center my-4">Register Yourself</h1>
+
+<div class="container my-5" style="width:60rem;">
+<div class="card border border-success" >
+  <div class="card-body">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"  class="row g-3 needs-validation" novalidate>
+      <div class="col-md-4">
+        <label for="validationCustom01"  class="form-label">First name</label>
+        <input formControlName="firstName" type="text" class="form-control" id="validationCustom01" required>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.firstName?.errors">
+          <div *ngIf="f?.firstName?.errors?.['required']" class="validation-error">
+            Please enter your firstName.
+          </div>
+
+        </small>
+
+
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02"  class="form-label">Last name</label>
+        <input type="text" formControlName="lastName" class="form-control" id="validationCustom02"   required>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.lastName?.errors">
+          <div *ngIf="f?.lastName?.errors?.['required']" class="validation-error">
+            Please enter your lastName.
+          </div>
+
+        </small>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input type="email" formControlName="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+
+        </div>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.email?.errors">
+          <div *ngIf="f?.email?.errors?.['required']" class="validation-error">
+            Please enter your email.
+          </div>
+          <div *ngIf="f?.email?.errors?.['pattern']">
+            Please Enter A Valid Email
+          </div>
+        </small>
+      </div>
+
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Password</label>
+        <input type="password" formControlName="password" class="form-control" id="validationCustom07"  required>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.password?.errors">
+          <div *ngIf="f?.password?.errors?.['required']" class="validation-error">
+            Please enter your Password.
+          </div>
+
+
+          <div *ngIf="f?.password?.errors?.['pattern']">
+          Password Must Contain Lowercase & UpperCase
+        </div>
+
+        </small>
+
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Confirm Password</label>
+        <input type="password" formControlName="cpassword" class="form-control" id="validationCustom08"  required>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.cpassword?.errors">
+          <div *ngIf="f?.cpassword?.errors?.['required']" class="validation-error">
+            Please enter your confirm password.
+          </div>
+
+          <div *ngIf="f?.cpassword?.errors?.['pattern']">
+            Confirm password Must Conatine Lowercase & UpperCase
+          </div>
+        </small>
+
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustomCountry" class="form-label">Country</label>
+        <select class="form-select" [(ngModel)]="selectedCountry" formControlName="country" (change)="changeCountry($event)" id="validationCustomCountry" required>
+          <option>Choose Country</option>
+          <option *ngFor="let country of Countries">{{country.name}}</option>
+
+        </select>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.country?.errors">
+          <div *ngIf="f?.country?.errors?.['required']" class="validation-error">
+            Select Country
+          </div>
+
+
+        </small>
+      </div>
+
+      <div class="col-md-3">
+        <label for="validationCustomState" class="form-label">State</label>
+        <select class="form-select" formControlName='state' (change)="changeState($event)"  id="validationCustomState" required>
+          <option >Choose State</option>
+          <option *ngFor="let state of states">{{state.name}}</option>
+        </select>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.state?.errors">
+          <div *ngIf="f?.state?.errors?.['required']" class="validation-error">
+            Select State
+          </div>
+
+
+        </small>
+
+      </div>
+      <div class="col-md-3">
+        <label  class="form-label">City</label>
+        <select placeholder="City"  class="form-select" formControlName='city'>
+          <option>--Choose City--</option>
+          <option *ngFor="let city of cities">{{city}}</option>
+        </select>
+          <small class="form-text " style="color: red"
+                 *ngIf="registerFormSubmitted && f?.city?.errors">
+            <div *ngIf="f?.city?.errors?.['required']" class="validation-error">
+              Select City
+            </div>
+
+
+        </small>
+
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Zip</label>
+        <input type="number" formControlName="zipCode" class="form-control" id="validationCustom05" required>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.zipCode?.errors">
+          <div *ngIf="f?.zipCode?.errors?.['required']" class="validation-error">
+          Please Provide a  Zip Code
+        </div>
+          <div *ngIf="f?.zipCode?.errors?.['pattern']">
+            Please Enter A Valid Zip Code
+          </div>
+
+
+
+        </small>
+      </div>
+      <div class="col-md-8">
+        <label for="validationCustomUsername" class="form-label">Phone Number</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend1">+91</span>
+          <input type="number" formControlName="phoneNo" class="form-control" id="validationCustomerPhoneNo" aria-describedby="inputGroupPrepend" required>
+
+        </div>
+        <small class="form-text " style="color: red"
+               *ngIf="registerFormSubmitted && f?.phoneNo?.errors">
+          <div *ngIf="f?.phoneNo?.errors?.['required']" class="validation-error">
+            Please Enter Your Phone No
+          </div>
+          <div *ngIf="f?.phoneNo?.errors?.['pattern']">
+            Please Enter A Valid Mobile Number
+          </div>
+
+
+
+
+        </small>
+      </div>
+      <div class="mb-3">
+        <input type="file"  class="form-control" aria-label="file example" required>
+
+      </div>
+
+      <div class="col-12 text-center">
+        <button  class="btn btn-success" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+
+
+

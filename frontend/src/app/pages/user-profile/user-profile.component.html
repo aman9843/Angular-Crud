@@ -1,0 +1,28 @@
+<div class="container my-5 text-center">
+
+<div class="card">
+<img class="card-img" src="./assets/user.png" alt="Card image cap">
+
+  <div class="card-body">
+    <h1 class="card-title text-center">{{user.isAdmin === false ? "USER" : "ADMIN"}}</h1>
+    <h1 class="card-text">You Can View Your Profile Here</h1>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">FirstName : {{user.firstName}}</li>
+    <li class="list-group-item">lastName : {{user.lastName}}</li>
+    <li class="list-group-item">Email : {{user.email}}</li>
+  </ul>
+  <div class="card-body">
+    <a style="text-decoration: none" class="card-link">Phone No : {{user.phoneNo}}</a>
+    <a  style="text-decoration: none" class="card-link">Country : {{user.country}}</a>
+    <a  style="text-decoration: none" class="card-link">State : {{user.state}}</a>
+    <a  style="text-decoration: none" class="card-link">city : {{user.city}}</a>
+    <a  style="text-decoration: none" class="card-link">zip-code :{{user.zipCode}}</a>
+  </div>
+  <div class="col-12 text-center my-4">
+    <button class="btn btn-success" type="submit">Update</button>
+  </div>
+</div>
+
+
+</div>

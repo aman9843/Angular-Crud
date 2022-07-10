@@ -1,0 +1,38 @@
+<div class="container my-5">
+<div class="card">
+  <nav class="navbar my-3">
+    <input class="form-control " name="firstName" [(ngModel)]="firstName" (ngModelChange)="search()"  style="width:50%; margin: 0 auto" type="text" Placeholder="Search">
+
+  </nav>
+<div class="card-body">
+  <table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col" (click)="sort('id')">User Id&nbsp;<i class="fa fa-sort"></i> </th>
+    <th scope="col" (click)="sort('firstName')">First &nbsp; <i class="fa fa-sort"></i> </th>
+    <th scope="col">Last</th>
+    <th scope="col">Username</th>
+    <th scope="col">View</th>
+    <th scope="col">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let users of allUsers.user | orderBy: key: reverse | paginate : {itemsPerPage : 5, currentPage:p};">
+    <th scope="row">{{users.id}}</th>
+    <td>{{users.firstName}}</td>
+    <td>{{users.lastName}}</td>
+    <td>{{users.email}}</td>
+    <td><i class="fa fa-eye" [routerLink]="'/profile/' +users.id" ></i></td>
+    <td><i (click)="deleteUser(users.id)"  class="fa fa-trash"></i></td>
+
+
+  </tr>
+
+  </tbody>
+    <pagination-controls (pageChange)="p =$event" ></pagination-controls>
+</table>
+</div>
+</div>
+</div>
+
+

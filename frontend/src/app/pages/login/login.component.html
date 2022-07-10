@@ -1,0 +1,47 @@
+<h1 class="text-center my-5 ">Login</h1>
+
+<div class="container my-5" style="width:40rem;">
+  <div class="card border border-success">
+    <div class="card-body">
+      <ngb-alert type="light-danger" class="mb-2" *ngIf="isLoginFailed"
+                 (close)="isLoginFailed = false">
+        <p class="mb-0">Login failed!</p>
+      </ngb-alert>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate>
+        <div class="md-6">
+          <label for="validationCustomUsername" class="form-label">Enter Your Email</label>
+          <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input type="email" formControlName="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+
+          </div>
+          <small class="form-text " style="color: red"
+                 *ngIf="loginFormSubmitted && f?.email?.errors">
+            <div *ngIf="f?.email?.errors?.['required']" class="validation-error">
+              Please enter your email.
+            </div>
+            <div *ngIf="f?.email?.errors?.['pattern']">
+              Please enter a valid email.
+            </div>
+          </small>
+        </div>
+        <div class="md-6">
+          <label  class="form-label">Password</label>
+          <input type="password" formControlName="password" class="form-control" id="validationCustom07"  required>
+          <small class="form-text " style="color: red"
+                 *ngIf="loginFormSubmitted && f?.password?.errors">
+            <div *ngIf="f?.password?.errors?.['required']"
+                 class="validation-error">
+              Please enter password.
+            </div>
+          </small>
+        </div>
+
+
+      <div class="col-12 text-center my-4">
+        <button class="btn btn-success" type="submit">Login</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
