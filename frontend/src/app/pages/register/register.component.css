@@ -19,11 +19,12 @@
   gap:15px;
   align-items: flex-start;
   padding: 5px 5%;
+  margin: 0 auto;
 }
 .container .main-video{
   background: #fff;
   border-radius: 5px;
-  padding: 10px;
+  padding: 0px;
 }
 
 .container .main-video video{
@@ -40,9 +41,10 @@
 .container .video-list {
   background: #fff;
   border-radius: 5px;
-  height: 520px;
+  height: 433px;
   overflow-y: scroll;
 }
+
 
 .container .video-list::-webkit-scrollbar{
 width:7px;
@@ -76,6 +78,13 @@ width:7px;
   border: 1px solid rgba(0,0,0,1);
   cursor: pointer;
 
+}
+
+.container .video-list .vid:first-child{
+  margin: 0px 10px 10px 10px;
+}
+.container .video-list .vid:last-child{
+  margin-bottom: 10px 10px 0px 10px;
 }
 
 
@@ -118,3 +127,5 @@ width:7px;
     padding: 10px;
   }
 }
+
+

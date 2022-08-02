@@ -205,8 +205,8 @@
 <div class="container">
   <div class="main-video">
     <div class="video">
-      <video controls
-         src="https://drive.google.com/uc?export=download&id=1yZm1E07Z5epi-j13fKXGAwZcN6fO8NNC" muted autoplay type='video/mp4'>
+      <video controls preload="none" poster="https://wallpapercave.com/wp/wp2722928.jpg"
+         src="https://drive.google.com/uc?export=download&id=1yZm1E07Z5epi-j13fKXGAwZcN6fO8NNC" type='video/mp4'>
       </video>
       <h3 class="title">01. Video Title</h3>
 
@@ -239,5 +239,27 @@
    
     
   </div>
+   <script>
+    let listVideo = document.querySelectorAll('.video-list.vid');
+    let mainVideo = document.querySelector('.main-video video');
+    let title = document.querySelector('.main-video .title');
+  
+  
+  
+  
+  
+    listVideo.forEach(video => {
+      video.onClick = () => {
+        listVideo.forEach(vid => vid.classList.remove('active'));
+        video.classList.add('active');
+        if(video.classList.contains('active')) {
+          let src = video.children[0].getAttribute('src');
+          mainVideo.src = src;
+          let text = video.children[1].innerHTML;
+          title.innerHTML = text;
+        }
+      }
+    })
+  </script> 
 </div>
 

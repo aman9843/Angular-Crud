@@ -1,8 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from 'src/app/services/login.service'
 import {NotificationService} from "../../services/notification.service";
+import * as $ from 'jquery';
+// import magnificPopup from 'magnific-popup'
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,8 @@ import {NotificationService} from "../../services/notification.service";
 export class LoginComponent implements OnInit {
 loginFormSubmitted = false;
 isLoginFailed= false;
+
+
 hide = true;
 
   get f() {
@@ -27,6 +32,16 @@ hide = true;
 
 
   ngOnInit(): void {
+
+    // $(document).ready(function() {
+    //   $('.video-gallery').magnificPopup({
+    //   delegate: 'a', 
+    //   type: 'iframe',
+    //   gallery:{
+    //     enabled:true
+    //   }
+    // });
+    // });
   }
 
 
@@ -78,5 +93,10 @@ hide = true;
     }
 
 
+  }
+
+
+  play() {
+    
   }
 }
