@@ -44,6 +44,63 @@ hide = true;
     // });
   }
 
+import { Component,TemplateRef} from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
+
+
+
+@Component({
+  selector: 'app-videos',
+  templateUrl: './videos.component.html',
+  styleUrls: ['./videos.component.scss']
+})
+export class VideosComponent  {
+
+
+  videoItems = [
+    {
+      name: 'Quick Implementation',
+      des:'Introductory Video',
+      src: 'https://drive.google.com/uc?export=download&id=1TlrfK3GSCP2pSWCHs3q2b0KAwFqFQ_Yh',
+      type: 'video/mp4',
+      imgUrl: 'assets/images/videos/Implement.png'
+    },
+    {
+      name: 'Add Device',
+      des:'How to Add Device',
+      src: 'https://drive.google.com/uc?export=download&id=1l7EMqunzCrlKmR8BmOc7t9f-4DBW0K58',
+      type: 'video/mp4',
+      imgUrl: 'assets/images/videos/AddDevice.png'
+    },
+    {
+      name: 'Add User',
+      des:'How to Add User',
+      src: 'https://drive.google.com/uc?export=download&id=1t_6brm5O0BkGp9GZsKHcAh3IX2kuouMM',
+      type: 'video/mp4',
+      imgUrl: 'assets/images/videos/AddUser.png'
+    },
+    {
+      name: 'Attendance',
+      des:'Attendance Operations for Biot Admin',
+      src:'https://drive.google.com/uc?export=download&id=1Mg4sW0s0vFcEzMjSvp9sRjtefxqXg2aD',
+      type:'video/mp4',
+      imgUrl: 'assets/images/videos/Attendance.png'
+    }
+  ];
+
+
+
+  constructor(public dialog: MatDialog) {
+
+  }
+
+  openDialog(templateRef: TemplateRef<any>) {
+    this.dialog.open(templateRef);
+  }
+
+
+
+}
 
   onSubmit() {
     this.loginFormSubmitted = true;
