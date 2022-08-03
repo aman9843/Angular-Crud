@@ -101,3 +101,40 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js">
 
 </script>
+
+<div class="content">
+    <div class="section-header">
+        <h1>Video Gallery</h1>
+    </div>
+    <div class="video-gallery" >
+        <div class="gallery-item" *ngFor="let video of videoItems; let i = index">
+            <img src={{video.imgUrl}} alt="Title"/>
+
+            <div class="gallery-item-caption">
+                <div>
+                    <h2>{{video.name}}</h2>
+                    <p>{{video.des}}</p>
+                </div>
+             <mat-icon (click)="openDialog(myDialog)" class="text-center">
+                    play_circle
+                </mat-icon>
+            </div>
+            <ng-template #myDialog>
+
+                <mat-dialog-content>
+
+                    <video title={{video.name}}  controls height="300" width="500">
+                        <source src={{video.src}} type='video/mp4'>
+                    </video>
+                </mat-dialog-content>
+                <mat-dialog-actions align="end">
+                    <button mat-button mat-dialog-close>Cancel</button>
+                </mat-dialog-actions>
+
+            </ng-template>
+        </div>
+
+    </div>
+
+
+</div>
