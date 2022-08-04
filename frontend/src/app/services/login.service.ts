@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import baseUrl from './helper';
 import { Subject } from 'rxjs';
@@ -14,7 +15,10 @@ export class LoginService {
   //login user Details
 
   public loginUser(user:any) {
-    return this.http.post(`${baseUrl}/api/login`,user)
+    return this.http.post(`${baseUrl}/api/login`,user, {
+        reportProgress: true,
+        observe: "events"
+      })
   }
 
   //getCurrentUser
@@ -35,6 +39,65 @@ export class LoginService {
     } else {
       return true;
     }
+  }
+
+// log out to remove data
+  public logOut() {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+    return true;
+
+  }
+  // get token
+
+  public getToken() {
+    return localStorage.getItem('token');
+  }
+
+
+  // set User
+
+  public setUser(user:any) {
+    localStorage.setItem("user",JSON.stringify(user))
+  }
+
+
+
+// get User
+  public getUser() {
+    let userStr= localStorage.getItem('user');
+    if(userStr != null) {
+
+      return JSON.parse(userStr);
+
+    } else {
+      this.logOut();
+      return null;
+    }
+  }
+
+
+  /// get role
+  public getUserRole()
+  {
+    let user = this.getUser();
+    return user.isAdmin;
+  }
+
+  public getAllUsers()
+  {
+    return this.http.get(`${baseUrl}/api`)
+  }
+
+  public deleteUsers(id:any) {
+    return this.http.delete(`${baseUrl}/api/user/${id}`)
+  }
+
+  public getUserById(id:any) {
+    return this.http.get(`${baseUrl}/api/user/${id}`)
+  }
+}
+
   }
 
 // log out to remove data
